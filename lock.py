@@ -27,4 +27,10 @@ def parse_args() -> argparse.Namespace:
         description="Mifare ultralight lock bytes translator.",
         formatter_class=argparse.RawDescriptionHelpFormatter)
 
-    # parser.add_argument()
+    subparsers = parser.add_subparsers(
+        dest="action", help="Choose an action you wish to perform.")
+
+    lock_parser = subparsers.add_parser(
+        "lock",
+        help="Calculate and return hex value for locking desired pages.")
+    lock_parser.add_argument()
