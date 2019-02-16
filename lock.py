@@ -88,7 +88,7 @@ def main(args=None) -> None:
         for page in args.pages:
             lock_bytes[page_to_index(page)] = 1
 
-        if args.block_lock_otp:
+        if args.lock_otp:
             lock_bytes[4] = 1
 
         if args.block_lock_pages10:
@@ -97,7 +97,7 @@ def main(args=None) -> None:
         if args.block_lock_pages4:
             lock_bytes[6] = 1
 
-        if args.lock_otp:
+        if args.block_lock_otp:
             lock_bytes[7] = 1
 
         print(bin2hex(list_to_str(lock_bytes)))
