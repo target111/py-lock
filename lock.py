@@ -56,18 +56,38 @@ def parse_args() -> argparse.Namespace:
         "lock",
         help="Calculate and return hex value for locking desired pages.")
     lock_parser.add_argument(
-        "pages",
+        "-p",
+        "--pages",
         help="Pages (4-16) denoting which pages you wish to lock.",
         metavar="[4-16]",
         type=get_pages)
+    lock_parser.add_argument(
+        "--block-lock-otp",
+        help="Freeze lock config for OTP",
+        action="store_true")
+    lock_parser.add_argument(
+        "--block-lock-pages4",
+        help="Freeze lock config for Page[4-9].",
+        action="store_true")
+    lock_parser.add_argument(
+        "--block-lock-pages10",
+        help="Freeze lock config for Page[10-15].",
+        action="store_true")
+    lock_parser.add_argument(
+        "--lock-otp", help="Locks OTP Page.", action="store_true")
 
     args = parser.parse_args()
     return args
 
 
 def main(args=None):
-    print(get_pages("[4-6,7,9-10]"))
+    # print(args.pages)
+    pass
+
+
+def run():
+    main(parse_args())
 
 
 if __name__ == "__main__":
-    main()
+    run()
