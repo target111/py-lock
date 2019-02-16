@@ -34,8 +34,12 @@ def get_pages(interval: str) -> list:
         for n in range(int(page[0]), int(page[-1]) + 1):
             pages.append(n)
 
-    for page in pages:
-        pass
+    if min(pages) < 4:
+        raise argparse.ArgumentTypeError(
+            "%s is out of range (4-16)." % str(min(pages)))
+    elif max(pages) > 16:
+        raise argparse.ArgumentTypeError(
+            "%s is out of range (4-16)." % str(max(pages)))
 
     return pages
 
@@ -62,7 +66,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def main(args=None):
-    print(get_pages("[3-6,7,9-10]"))
+    print(get_pages("[4-6,7,9-10]"))
 
 
 if __name__ == "__main__":
