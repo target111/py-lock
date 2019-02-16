@@ -60,6 +60,7 @@ def parse_args() -> argparse.Namespace:
         "--pages",
         help="Pages (4-16) denoting which pages you wish to lock.",
         metavar="[4-16]",
+        default=[],
         type=get_pages)
     lock_parser.add_argument(
         "--block-lock-otp",
@@ -80,12 +81,15 @@ def parse_args() -> argparse.Namespace:
     return args
 
 
-def main(args=None):
-    # print(args.pages)
-    pass
+def main(args=None) -> None:
+    if args.action == "lock":
+        lock_bytes = init_bytes()
+
+        for page in args.pages:
+            lock_bytes[page_to_index(page)] = 1
 
 
-def run():
+def run() -> None:
     main(parse_args())
 
 
