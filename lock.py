@@ -86,7 +86,7 @@ def parse_args(help: bool = False) -> argparse.Namespace:
         type=get_pages)
     lock_parser.add_argument(
         "--block-lock-otp",
-        help="Freeze lock config for OTP",
+        help="Freeze lock config for OTP.",
         action="store_true")
     lock_parser.add_argument(
         "--block-lock-pages4",
@@ -136,7 +136,7 @@ def main(args=None) -> None:
         locked_pages = get_locked_pages(lock_bytes)
 
         if len(locked_pages):
-            print("Locked pages: %s" % list2str(sorted(locked_pages), ", "))
+            print("Locked pages: %s." % list2str(sorted(locked_pages), ", "))
 
         if int(lock_bytes[4]) == 1:
             print("OTP page locked.")
